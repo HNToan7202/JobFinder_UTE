@@ -1,27 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../feature/cart/presentation/page/cart_page.dart';
-import '../feature/checkout/presentation/page/checkout_page.dart';
-import '../feature/home/data/model/categories_req.dart';
-import '../feature/home/presentation/page/cubit/home_cubit.dart';
+import 'package:jobhub_ute/app/feature/apply/presentation/page/apply_page.dart';
+import 'package:jobhub_ute/app/feature/cv_profile/presentaion/pages/cv_page.dart';
+import 'package:jobhub_ute/app/feature/cv_review/presentation/page/cv_review_page.dart';
+import 'package:jobhub_ute/app/feature/job_detail/presentaion/pages/job_detail_body.dart';
+import 'package:jobhub_ute/app/feature/menu/cubit/position_cubit.dart';
+import 'package:jobhub_ute/app/feature/settings/presentation/page/setting_page.dart';
+import 'package:jobhub_ute/app/feature/upload_cv/presentation/page/upload_cv_page.dart';
 import '../feature/home/presentation/page/nav_bar.dart';
 import '../feature/intro/presentation/page/intro_page.dart';
-import '../feature/intro/presentation/page/on_boarding_page.dart';
+import '../feature/job_detail/presentaion/pages/job_detail_page.dart';
 import '../feature/login/presentation/page/login_page.dart';
-import '../feature/menu/cubit/menu_cubit.dart';
-import '../feature/order/data/model/order_response.dart';
-import '../feature/order/data/model/order_status.dart';
-import '../feature/order/data/model/order_status_req.dart';
-import '../feature/order/presentation/cubit/order_cubit.dart';
-import '../feature/payment/presentation/pages/payment_page.dart';
 import '../feature/profile/presentation/cubit/user_cubit.dart';
 import '../feature/profile/presentation/pages/profile_page.dart';
 import '../feature/reset_password/presentation/page/new_password_page.dart';
 import '../feature/reset_password/presentation/page/otp_page.dart';
 import '../feature/reset_password/presentation/page/reset_password_page.dart';
-import '../feature/restaurant/data/model/restaurant_model.dart';
-import '../feature/restaurant/data/model/restaurant_req.dart';
-import '../feature/restaurant/presentation/page/res_detail_page.dart';
 import '../feature/sign_up/presentation/cubit/sign_up_cubit.dart';
 import '../feature/sign_up/presentation/pages/sign_up_page.dart';
 import '../feature/sign_up/presentation/pages/verify_page.dart';
@@ -35,10 +29,10 @@ Route<dynamic>? Function(RouteSettings)? onGenerateRoute = (settings) {
         builder: (_) => const LoginPage(),
         settings: const RouteSettings(name: LoginPage.routeName),
       );
-    case OnBoardingPage.routeName:
+    case ApplyPage.routeName:
       return MaterialPageRoute(
-        builder: (_) => const OnBoardingPage(),
-        settings: const RouteSettings(name: OnBoardingPage.routeName),
+        builder: (_) => const ApplyPage(),
+        settings: const RouteSettings(name: ApplyPage.routeName),
       );
     case WelComePage.routeName:
       return MaterialPageRoute(
@@ -62,20 +56,8 @@ Route<dynamic>? Function(RouteSettings)? onGenerateRoute = (settings) {
       return MaterialPageRoute(
         builder: (_) => MultiBlocProvider(
           providers: [
-            BlocProvider<MenuCubit>(
-              create: (context) => MenuCubit()..getCategories(CategoriesReq()),
-            ),
-            BlocProvider<HomeCubit>(
-              create: (context) =>
-                  HomeCubit()..getAllRestaurant(RestaurantReq()),
-            ),
-            BlocProvider<OrderCubit>(
-              create: (context) => OrderCubit()
-                ..getOrderByStatus(OrderStatus(
-                    page: "1",
-                    size: "10",
-                    status: OrderStatusState.UNPURCHASED.name)),
-            ),
+            BlocProvider<PositionCubit>(
+                create: (context) => PositionCubit()..getAllPosition()),
           ],
           child: const NavBar(),
         ),
@@ -85,6 +67,11 @@ Route<dynamic>? Function(RouteSettings)? onGenerateRoute = (settings) {
       return MaterialPageRoute(
         builder: (_) => const SplashPage(),
         settings: const RouteSettings(name: SplashPage.routeName),
+      );
+    case JobDetailPage.routeName:
+      return MaterialPageRoute(
+        builder: (_) => const JobDetailPage(),
+        settings: const RouteSettings(name: JobDetailPage.routeName),
       );
     case IntroPage.routeName:
       return MaterialPageRoute(
@@ -115,14 +102,7 @@ Route<dynamic>? Function(RouteSettings)? onGenerateRoute = (settings) {
         ),
         settings: const RouteSettings(name: VerifyAccountPage.routeName),
       );
-    case RestaurantDetailPage.routeName:
-      final Restaurant res = settings.arguments as Restaurant;
-      return MaterialPageRoute(
-        builder: (_) => RestaurantDetailPage(
-          res: res,
-        ),
-        settings: const RouteSettings(name: RestaurantDetailPage.routeName),
-      );
+
     case ProfilePage.routeName:
       return MaterialPageRoute(
         builder: (_) => MultiBlocProvider(providers: [
@@ -132,23 +112,30 @@ Route<dynamic>? Function(RouteSettings)? onGenerateRoute = (settings) {
         ], child: const ProfilePage()),
         settings: const RouteSettings(name: ProfilePage.routeName),
       );
-    case CheckoutPage.routeName:
-      final Order order = settings.arguments as Order;
+
+    case UploadCVPgae.routeName:
       return MaterialPageRoute(
-        builder: (_) => CheckoutPage(
-          order: order,
+        builder: (_) => const UploadCVPgae(),
+        settings: const RouteSettings(name: UploadCVPgae.routeName),
+      );
+
+    case SettingsPage.routeName:
+      return MaterialPageRoute(
+        builder: (_) => const SettingsPage(),
+        settings: const RouteSettings(name: SettingsPage.routeName),
+      );
+    case CVReviewPage.routeName:
+      final String url = settings.arguments as String;
+      return MaterialPageRoute(
+        builder: (_) => CVReviewPage(
+          url: url,
         ),
-        settings: const RouteSettings(name: CheckoutPage.routeName),
+        settings: const RouteSettings(name: CVReviewPage.routeName),
       );
-    case CartPage.routeName:
+    case ResumePage.routeName:
       return MaterialPageRoute(
-        builder: (_) => const CartPage(),
-        settings: const RouteSettings(name: CartPage.routeName),
-      );
-    case PaymentPage.routeName:
-      return MaterialPageRoute(
-        builder: (_) => const PaymentPage(),
-        settings: const RouteSettings(name: PaymentPage.routeName),
+        builder: (_) => const ResumePage(),
+        settings: const RouteSettings(name: ResumePage.routeName),
       );
   }
   return null;

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:jobhub_ute/gen/assets.gen.dart';
 
 import '../../../../../common/color_extension.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
@@ -89,13 +91,19 @@ class _NotificationPageState extends State<NotificationPage> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        margin: const EdgeInsets.only(top: 4),
-                        width: 8,
-                        height: 8,
-                        decoration: BoxDecoration(
-                            color: AppColorScheme.kPrimary,
-                            borderRadius: BorderRadius.circular(4)),
+                      // Container(
+                      //   margin: const EdgeInsets.only(top: 4),
+                      //   width: 8,
+                      //   height: 8,
+                      //   decoration: BoxDecoration(
+                      //       color: AppColorScheme.kPrimary,
+                      //       borderRadius: BorderRadius.circular(4)),
+                      // ),
+
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset(Assets.images.fblg.path,
+                            width: 40, height: 40),
                       ),
                       const SizedBox(
                         width: 15,

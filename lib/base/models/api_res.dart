@@ -12,7 +12,7 @@ class ApiResponse<T> with _$ApiResponse<T> {
     required int code,
     required String message,
     required int time,
-    required T data,
+    required T result,
   }) = SuccessRes;
   const factory ApiResponse.error({
     required String status,

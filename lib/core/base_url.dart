@@ -5,4 +5,6 @@ class BaseURL {
   // ignore: constant_identifier_names
   ///http://localhost:8080/api
   static const BASE_URL2 = "http://localhost:8080/api";
+
+  static const URL = "jobhub-kltn.azurewebsites.net";
 }

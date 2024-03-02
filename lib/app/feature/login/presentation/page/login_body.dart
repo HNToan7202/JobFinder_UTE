@@ -12,7 +12,6 @@ import '../../../auth/data/models/user_info_request.dart';
 import '../../../auth/presentation/cubit/auth_cubit.dart';
 import '../../../home/presentation/page/nav_bar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../order/presentation/cubit/order_cubit.dart';
 import '../../../reset_password/presentation/page/reset_password_page.dart';
 import '../../../sign_up/presentation/pages/sign_up_page.dart';
 import '../bloc/login_bloc.dart';
@@ -51,17 +50,6 @@ class LoginBody extends StatelessWidget {
         BlocListener<LoginBloc, LoginState>(
           listener: (context, state) {
             // Additional login bloc listener logic if needed
-          },
-        ),
-        BlocListener<OrderCubit, OrderState>(
-          listener: (context, state) {
-            // if (state is OrderLoaded) {
-            //   print("OrderLoaded Đã load lên rồi nè");
-            //   final orders = state.orders;
-            //   var overlayBloc = OverlayBloc(orders.first);
-            //   overlayBloc.add(OverlayEvent.show);
-            // }
-            // Additional order cubit listener logic if needed
           },
         ),
       ],
@@ -188,7 +176,7 @@ class LoginBody extends StatelessWidget {
                     title: AppLocalizations.of(context)!.login,
                     decoration: BoxDecoration(
                       color: AppColorScheme.kPrimary,
-                      borderRadius: BorderRadius.circular(34),
+                      borderRadius: BorderRadius.circular(14),
                     ),
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
@@ -214,11 +202,11 @@ class LoginBody extends StatelessWidget {
                       Container(
                         height: 1.0,
                         color: AppColorScheme.inkGray,
-                        margin: EdgeInsets.only(top: 7.0),
+                        margin: const EdgeInsets.only(top: 7.0),
                       ),
                       Center(
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 5.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
                           color: AppColorScheme.inkWhite,
                           child: Text(
                             AppLocalizations.of(context)!.orLoginWith,
@@ -252,7 +240,7 @@ class LoginBody extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Image.asset(
-                                Assets.images.facebookLogo.path,
+                                Assets.images.signFace.path,
                                 width: 24,
                                 height: 24,
                               ),
@@ -311,7 +299,7 @@ class LoginBody extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 16,
                   ),
                   TextButton(
                     onPressed: () {

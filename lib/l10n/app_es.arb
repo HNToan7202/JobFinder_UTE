@@ -42,7 +42,7 @@
   "sub3": "Real time tracking of your food on the app\nonce you placed the order",
   "next": "Next",
   "createAccount": "Create an account",
-  "welcome": "Discover the best foods from over 1,000\nrestaurants and fast delivery to your\ndoorstep",
+  "welcome": "Apply with Jobhub\nChat with employers",
   "detailSignUp": "Add your details to sign up",
   "homeTab": "Home",
   "orderTab": "Order",
@@ -54,5 +54,9 @@
   "event": "Events",
   "tools": "Tools",
   "account": "Account",
-  "nologin": "Experience without log in"
+  "cv": "CV & Profile",
+  "setting": "Setting",
+  "network": "Network",
+  "notverified": "Not verified",
+  "verified": "Verified"
 }

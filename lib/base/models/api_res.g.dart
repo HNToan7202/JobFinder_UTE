@@ -15,7 +15,7 @@ _$SuccessRes<T> _$$SuccessResFromJson<T>(
       code: json['code'] as int,
       message: json['message'] as String,
       time: json['time'] as int,
-      data: fromJsonT(json['data']),
+      result: fromJsonT(json['result']),
       $type: json['runtimeType'] as String?,
     );
 
@@ -28,7 +28,7 @@ Map<String, dynamic> _$$SuccessResToJson<T>(
       'code': instance.code,
       'message': instance.message,
       'time': instance.time,
-      'data': toJsonT(instance.data),
+      'result': toJsonT(instance.result),
       'runtimeType': instance.$type,
     };
 

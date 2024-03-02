@@ -1,9 +1,9 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:jobhub_ute/app/feature/intro/presentation/page/intro_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../gen/assets.gen.dart';
-import '../../../intro/presentation/page/on_boarding_page.dart';
 import '../../../login/presentation/page/login_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -31,7 +31,7 @@ class _SplashPageState extends State<SplashPage> {
       getIsFirstTime().then((value) {
         if (value) {
           Navigator.of(context).pushNamedAndRemoveUntil(
-              OnBoardingPage.routeName, (route) => false,
+              IntroPage.routeName, (route) => false,
               arguments: "");
         } else {
           Navigator.of(context).pushNamedAndRemoveUntil(

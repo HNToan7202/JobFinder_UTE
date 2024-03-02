@@ -42,7 +42,7 @@
   "sub3": "Theo dõi thời gian thực về món ăn của bạn trên ứng dụng\nằm sau khi bạn đặt hàng",
   "next": "Tiếp theo",
   "createAccount": "Tạo tài khoản mới",
-  "welcome": "Khám phá những món ăn ngon nhất từ ​​hơn 1.000\nnhà hàng và giao hàng nhanh chóng đến tận nhà\ncủa bạn",
+  "welcome": "Ứng tuyển nhanh hơn với Jobhub\nChat với nhà tuyển dụng ngay",
   "detailSignUp": "Nhập thông tin của bạn để tạo tài khoản",
   "homeTab": "Trang chủ",
   "orderTab": "Đơn hàng",
@@ -54,5 +54,9 @@
   "event": "Sự kiện",
   "tools": "Công cụ",
   "account": "Tài khoản",
-  "noLogin": "Trải nghiệm không cần đăng nhập"
+  "cv": "CV & Profile",
+  "setting": "Cài đặt",
+  "network": "Mạng xã hội",
+  "notverified": "Chưa xác thực",
+  "verified": "Đã xác thực"
 }

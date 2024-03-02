@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:jobhub_ute/app/feature/home/presentation/page/nav_bar.dart';
 import 'package:overlay_support/overlay_support.dart';
 import 'app_route/app_route.dart';
 import 'feature/multiple_language/presentation/cubit/multiple_language_cubit.dart';
@@ -31,7 +32,7 @@ class _MyAppState extends State<MyApp> {
               primarySwatch: Colors.blue,
             ),
             // home: const SplashPage(),
-            initialRoute: SplashPage.routeName,
+            initialRoute: NavBar.routeName,
             onGenerateRoute: onGenerateRoute,
             builder: EasyLoading.init(),
           ),

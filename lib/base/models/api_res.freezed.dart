@@ -37,7 +37,7 @@ mixin _$ApiResponse<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String status, int code, String message, int time, T data)
+            String status, int code, String message, int time, T result)
         success,
     required TResult Function(String status, int code, String message, int time)
         error,
@@ -46,14 +46,15 @@ mixin _$ApiResponse<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String status, int code, String message, int time, T data)?
+            String status, int code, String message, int time, T result)?
         success,
     TResult? Function(String status, int code, String message, int time)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String status, int code, String message, int time, T data)?
+    TResult Function(
+            String status, int code, String message, int time, T result)?
         success,
     TResult Function(String status, int code, String message, int time)? error,
     required TResult orElse(),
@@ -141,7 +142,7 @@ abstract class _$$SuccessResCopyWith<T, $Res>
       __$$SuccessResCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({String status, int code, String message, int time, T data});
+  $Res call({String status, int code, String message, int time, T result});
 }
 
 /// @nodoc
@@ -159,7 +160,7 @@ class __$$SuccessResCopyWithImpl<T, $Res>
     Object? code = null,
     Object? message = null,
     Object? time = null,
-    Object? data = freezed,
+    Object? result = freezed,
   }) {
     return _then(_$SuccessRes<T>(
       status: null == status
@@ -178,9 +179,9 @@ class __$$SuccessResCopyWithImpl<T, $Res>
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as int,
-      data: freezed == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
+      result: freezed == result
+          ? _value.result
+          : result // ignore: cast_nullable_to_non_nullable
               as T,
     ));
   }
@@ -194,7 +195,7 @@ class _$SuccessRes<T> implements SuccessRes<T> {
       required this.code,
       required this.message,
       required this.time,
-      required this.data,
+      required this.result,
       final String? $type})
       : $type = $type ?? 'success';
 
@@ -211,14 +212,14 @@ class _$SuccessRes<T> implements SuccessRes<T> {
   @override
   final int time;
   @override
-  final T data;
+  final T result;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'ApiResponse<$T>.success(status: $status, code: $code, message: $message, time: $time, data: $data)';
+    return 'ApiResponse<$T>.success(status: $status, code: $code, message: $message, time: $time, result: $result)';
   }
 
   @override
@@ -230,13 +231,13 @@ class _$SuccessRes<T> implements SuccessRes<T> {
             (identical(other.code, code) || other.code == code) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.time, time) || other.time == time) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            const DeepCollectionEquality().equals(other.result, result));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, status, code, message, time,
-      const DeepCollectionEquality().hash(data));
+      const DeepCollectionEquality().hash(result));
 
   @JsonKey(ignore: true)
   @override
@@ -248,35 +249,36 @@ class _$SuccessRes<T> implements SuccessRes<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String status, int code, String message, int time, T data)
+            String status, int code, String message, int time, T result)
         success,
     required TResult Function(String status, int code, String message, int time)
         error,
   }) {
-    return success(status, code, message, time, data);
+    return success(status, code, message, time, result);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String status, int code, String message, int time, T data)?
+            String status, int code, String message, int time, T result)?
         success,
     TResult? Function(String status, int code, String message, int time)? error,
   }) {
-    return success?.call(status, code, message, time, data);
+    return success?.call(status, code, message, time, result);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String status, int code, String message, int time, T data)?
+    TResult Function(
+            String status, int code, String message, int time, T result)?
         success,
     TResult Function(String status, int code, String message, int time)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(status, code, message, time, data);
+      return success(status, code, message, time, result);
     }
     return orElse();
   }
@@ -324,7 +326,7 @@ abstract class SuccessRes<T> implements ApiResponse<T> {
       required final int code,
       required final String message,
       required final int time,
-      required final T data}) = _$SuccessRes<T>;
+      required final T result}) = _$SuccessRes<T>;
 
   factory SuccessRes.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =
@@ -338,7 +340,7 @@ abstract class SuccessRes<T> implements ApiResponse<T> {
   String get message;
   @override
   int get time;
-  T get data;
+  T get result;
   @override
   @JsonKey(ignore: true)
   _$$SuccessResCopyWith<T, _$SuccessRes<T>> get copyWith =>
@@ -450,7 +452,7 @@ class _$ErrorRes<T> implements ErrorRes<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String status, int code, String message, int time, T data)
+            String status, int code, String message, int time, T result)
         success,
     required TResult Function(String status, int code, String message, int time)
         error,
@@ -462,7 +464,7 @@ class _$ErrorRes<T> implements ErrorRes<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String status, int code, String message, int time, T data)?
+            String status, int code, String message, int time, T result)?
         success,
     TResult? Function(String status, int code, String message, int time)? error,
   }) {
@@ -472,7 +474,8 @@ class _$ErrorRes<T> implements ErrorRes<T> {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String status, int code, String message, int time, T data)?
+    TResult Function(
+            String status, int code, String message, int time, T result)?
         success,
     TResult Function(String status, int code, String message, int time)? error,
     required TResult orElse(),

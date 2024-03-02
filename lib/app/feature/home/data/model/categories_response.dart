@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import '../../../../../core/models/common_response.dart';
 
 class CategoriesResponse<CategoriesResponseData> extends SuccessRessponse {
